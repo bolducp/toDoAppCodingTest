@@ -45,6 +45,7 @@ app.controller('homeCtrl', function($scope, Tasks){
     Tasks.deleteTask({taskId}).then(displayTasks, console.error);
   }
 
+
 });
 
 app.service('Tasks', function($http){
