@@ -5,7 +5,7 @@ var app = angular.module("toDo", ["ui.router"]);
 app.config(function($stateProvider, $urlRouterProvider){
   $stateProvider
     .state("home", {url: "/", templateUrl: "/partials/home.html", controller: "homeCtrl"})
-    .state("addTask", {url: "/addTask", templateUrl: "/partials/addTask.html", controller: "addCtrl"})
+    //.state("addTask", {url: "/addTask", templateUrl: "/partials/addTask.html", controller: "addCtrl"})
 
   $urlRouterProvider.otherwise("/");
 });

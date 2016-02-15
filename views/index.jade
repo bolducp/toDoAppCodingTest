@@ -1,5 +1,20 @@
-extends layout
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet", href='https://fonts.googleapis.com/css?family=Satisfy|Marvel')
+    link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.min.css")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="/bower_components/jquery/dist/jquery.min.js")
+    script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
+    script(src="/bower_components/angular/angular.min.js")
+    script(src="/bower_components/angular-ui-router/release/angular-ui-router.min.js")
+    script(src="/js/module.js")
+  
+    
+  body
+    h1= title
+    p Welcome to #{title}
 
-block content
-  h1= title
-  p Welcome to #{title}
+    block content
