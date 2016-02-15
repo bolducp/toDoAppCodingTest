@@ -1,0 +1,31 @@
+<div ng-controller="homeCtrl">
+  <div ng-if="!tasks.length">
+    <br>
+    <h3>You are have not added any tasks to your to do list.</h3>
+    <h4>Add a task begin.</h4>
+  </div>
+  <div ng-if="stocks.length">
+    <h1>Your To-Do List:</h1>
+    <table class="table" ng-if="tasks.length">
+      <thead>
+        <th>Name</th>
+        <th>Due date</th>
+        <th>Description</th>
+        <th>Completed</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="task in tasks">
+          <td>{{task.name}}</td>
+          <td>{{task.due}}</td>
+          <td>{{task.description}}</td>
+          <td>{{task.isComplete}}</td>
+          <td>EDIT</td>
+          <td>DELETE</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+  </div>
+</div>

@@ -9,3 +9,14 @@ app.config(function($stateProvider, $urlRouterProvider){
 
   $urlRouterProvider.otherwise("/");
 });
+
+
+app.controller('homeCtrl', function($scope){
+
+
+
+});
+
+app.service('Tasks', function(){
+
+});
