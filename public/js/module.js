@@ -12,10 +12,13 @@ app.config(function($stateProvider, $urlRouterProvider){
 
 
 app.controller('homeCtrl', function($scope, Tasks){
+  if (!$scope.tasks){
+    $scope.tasks = "";
+  }
 
   Tasks.getTasks()
     .then(function(tasks) {
-       $scope.tasks = tasks;
+      $scope.tasks = tasks.data;
     },
     function(err) {
      console.error(err);
@@ -23,8 +26,14 @@ app.controller('homeCtrl', function($scope, Tasks){
 
   $scope.add = function(){
     Tasks.addTask({name: $scope.name, due: $scope.due, description: $scope.description })
-    Tasks.getTasks();
-    $scope.reset();
+      .then(function(){
+        $scope.reset();
+        Tasks.getTasks();
+      },
+    function(err) {
+      console.error(err);
+    });
+
   }
 
   $scope.reset = function(){
@@ -33,20 +42,17 @@ app.controller('homeCtrl', function($scope, Tasks){
     $scope.description = " ";
   }
 
-
 });
 
 
 
 app.service('Tasks', function($http){
   this.getTasks = function() {
-    console.log("fetched Tasks!");
     return $http.get("/tasks");
   }
 
   this.addTask = function(task) {
     return $http.post("/addTask", task);
   }
-
 
 });
