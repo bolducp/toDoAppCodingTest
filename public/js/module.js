@@ -23,9 +23,11 @@ app.controller('homeCtrl', function($scope, Tasks){
   }
 
   $scope.add = function(){
+    var dueDate = moment($scope.due).format("MMMM Do YYYY");
+
     Tasks.addTask({
       name: $scope.name,
-      due: $scope.due,
+      due: dueDate,
       description: $scope.description
     }).then(updateDisplay, console.error);
   }
@@ -45,7 +47,9 @@ app.controller('homeCtrl', function($scope, Tasks){
     Tasks.deleteTask({taskId}).then(displayTasks, console.error);
   }
 
-
+  $scope.toggleComplete = function(taskId) {
+    Tasks.toggleComplete({taskId}).then(displayTasks, console.error);
+  }
 });
 
 app.service('Tasks', function($http){
@@ -59,5 +63,9 @@ app.service('Tasks', function($http){
 
   this.deleteTask = function(taskId) {
     return $http.post("/deleteTask", taskId);
+  }
+
+  this.toggleComplete = function(taskId) {
+    return $http.post("/toggleComplete", taskId);
   }
 });

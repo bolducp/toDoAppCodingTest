@@ -36,5 +36,17 @@ router.post('/deleteTask', function(req, res, next){
 });
 
 
+router.post('/toggleComplete', function(req, res, next){
+  console.log("hit!");
+  Task.find({ _id: req.body.taskId }, function(err, task){
+    task.isComplete = !task.isComplete;
+    task.save(function(err){
+      if (err) return res.status(400).send(err);
+      res.send();
+    });
+  });
+});
+
+
 
 module.exports = router;
