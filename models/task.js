@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var taskSchema = new mongoose.Schema({
   name: { type: String, required: true },
   isComplete: { type: Boolean, default: false },
-  due: Date,
+  due: String,
   description: String
 });
 
