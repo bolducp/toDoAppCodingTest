@@ -19,9 +19,19 @@ router.post('/addTask', function(req, res, next){
   var task = new Task({ name: req.body.name, due: req.body.due, description: req.body.description });
   task.save(function(err){
     if (err) res.status(400).send(err);
-    res.send("saved task");
+    res.send("saved task!");
   })
 });
+
+router.post('/deleteTask', function(req, res, next){
+  Task.remove({ id: req.body }, function(err){
+    if (err) return res.status(400).send(err);
+    res.send("deleted!");
+  })
+});
+
+
+
 
 
 module.exports = router;

@@ -27,7 +27,7 @@ app.controller('homeCtrl', function($scope, Tasks){
       name: $scope.name,
       due: $scope.due,
       description: $scope.description
-    }).then(updateDisplay, console.error)
+    }).then(updateDisplay, console.error);
   }
 
   function updateDisplay() {
@@ -40,6 +40,11 @@ app.controller('homeCtrl', function($scope, Tasks){
     $scope.due = " ";
     $scope.description = " ";
   }
+
+  $scope.delete = function(taskId) {
+    Tasks.deleteTask(taskId).then(displayTasks, console.error);
+  }
+
 });
 
 app.service('Tasks', function($http){
@@ -49,5 +54,10 @@ app.service('Tasks', function($http){
 
   this.addTask = function(task) {
     return $http.post("/addTask", task);
+  }
+
+  this.deleteTask = function(taskId) {
+    console.log("request made");
+    return $http.post("/delete", taskId);
   }
 });
