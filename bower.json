@@ -1,0 +1,19 @@
+{
+  "name": "toToAddTest",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Paige Bolduc <paigebolduc@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "/public/bower_components",
+    "test",
+    "tests"
+  ]
+}
