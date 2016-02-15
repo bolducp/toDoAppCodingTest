@@ -5,8 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/toDoTestApp';
+var mongoose = require('mongoose');
+mongoose.connect(mongoUrl, function(err) {
+  console.log(err || `Connected to MongoDB: ${mongoUrl}`);
+});
 
 var app = express();
 
@@ -22,8 +25,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+app.use('/', require('./routes/index'));
+app.use('/users', require('./routes/users'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
