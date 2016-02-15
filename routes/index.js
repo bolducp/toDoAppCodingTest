@@ -15,5 +15,13 @@ router.get('/tasks', function(req, res, next) {
   })
 });
 
+router.post('/addTask', function(req, res, next){
+  var task = new Task({ name: req.body.name, due: req.body.due, description: req.body.description });
+  task.save(function(err){
+    if (err) res.status(400).send(err);
+    res.send("saved task");
+  })
+});
+
 
 module.exports = router;

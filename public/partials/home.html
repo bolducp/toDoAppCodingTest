@@ -4,6 +4,17 @@
     <h3>You are have not added any tasks to your to do list.</h3>
     <h4>Add a task begin.</h4>
   </div>
+  <br>
+  <h2>Add Task:</h2>
+  <form novalidate class="simple-form">
+    Name: <input type="text" ng-model="name" /><br />
+    Due: <input type="date" ng-model="due"/><br />
+    Description: <input type="text" ng-model="description"/><br />
+    <input type="button" ng-click="reset()" value="Reset" />
+    <input type="button" ng-click="add()" value="Add" />
+  </form>
+  <br>
+
   <div ng-if="stocks.length">
     <h1>Your To-Do List:</h1>
     <table class="table" ng-if="tasks.length">
