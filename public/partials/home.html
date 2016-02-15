@@ -11,8 +11,8 @@
     Name: <input type="text" ng-model="name" /><br />
     Due: <input type="date" min="2016-02-15" ng-model="due"/><br />
     Description: <input type="text" ng-model="description"/><br />
-    <input type="button" ng-click="reset()" value="Reset" />
-    <input type="button" ng-click="add()" value="Add" />
+    <input class="btn btn-danger" type="button" ng-click="reset()" value="Reset" />
+    <input class="btn btn-success" type="button" ng-click="add()" value="Add" />
   </form>
   <hr>
   <br>
@@ -34,10 +34,10 @@
           <td>{{task.description}}</td>
           <td>
             <span class="glyphicon glyphicon-ok" aria-hidden="true" ng-if="task.isComplete === true"></span>
-            <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-if="task.isComplete === false"></span>
-            <input type="button" ng-click="toggleComplete(task._id)" value="Change" /></td>
+            <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-if="task.isComplete === false"></span>&nbsp;
+            <input class="btn btn-primary" type="button" ng-click="toggleComplete(task._id)" value="Change" /></td>
           <td>
-              <input type="button" ng-click="delete(task._id)" value="Delete" />
+              <input class="btn btn-danger" type="button" ng-click="delete(task._id)" value="Delete" />
         </td>
         </tr>
       </tbody>
