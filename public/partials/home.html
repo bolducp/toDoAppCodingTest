@@ -21,8 +21,8 @@
     <h1>Your To-Do List:</h1>
     <table class="table table-hover">
       <thead>
-        <th>Name</th>
-        <th>Due date</th>
+        <th>Task Name</th>
+        <th>Due Date</th>
         <th>Description</th>
         <th>Completed</th>
         <th>Delete</th>
@@ -32,8 +32,10 @@
           <td>{{task.name}}</td>
           <td>{{task.due}}</td>
           <td>{{task.description}}</td>
-          <td>{{task.isComplete}}
-            <input type="button" ng-click="toggleComplete(task._id)" value="Complete" /></td>
+          <td>
+            <span class="glyphicon glyphicon-ok" aria-hidden="true" ng-if="task.isComplete === true"></span>
+            <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-if="task.isComplete === false"></span>
+            <input type="button" ng-click="toggleComplete(task._id)" value="Change" /></td>
           <td>
               <input type="button" ng-click="delete(task._id)" value="Delete" />
         </td>
