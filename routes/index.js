@@ -16,21 +16,24 @@ router.get('/tasks', function(req, res, next) {
 });
 
 router.post('/addTask', function(req, res, next){
-  var task = new Task({ name: req.body.name, due: req.body.due, description: req.body.description });
+  var task = new Task( {
+    name: req.body.name,
+    due: req.body.due,
+    description: req.body.description
+  });
+
   task.save(function(err){
     if (err) res.status(400).send(err);
-    res.send("saved task!");
+    res.send();
   })
 });
 
 router.post('/deleteTask', function(req, res, next){
-  Task.remove({ id: req.body }, function(err){
+  Task.remove({ _id: req.body.taskId }, function(err){
     if (err) return res.status(400).send(err);
-    res.send("deleted!");
+    res.send();
   })
 });
-
-
 
 
 

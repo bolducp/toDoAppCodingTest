@@ -42,7 +42,7 @@ app.controller('homeCtrl', function($scope, Tasks){
   }
 
   $scope.delete = function(taskId) {
-    Tasks.deleteTask(taskId).then(displayTasks, console.error);
+    Tasks.deleteTask({taskId}).then(displayTasks, console.error);
   }
 
 });
@@ -57,7 +57,6 @@ app.service('Tasks', function($http){
   }
 
   this.deleteTask = function(taskId) {
-    console.log("request made");
-    return $http.post("/delete", taskId);
+    return $http.post("/deleteTask", taskId);
   }
 });
