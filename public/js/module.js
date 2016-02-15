@@ -52,6 +52,7 @@ app.controller('homeCtrl', function($scope, Tasks){
   }
 });
 
+
 app.service('Tasks', function($http){
   this.getTasks = function() {
     return $http.get("/tasks");
